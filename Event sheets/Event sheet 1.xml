@@ -25,6 +25,18 @@
                             <param id="0" name="Object">MainHero</param>
                             <param id="1" name="Image point (optional)">0</param>
                         </action>
+                        <action id="-23" name="Move at angle" sid="640143940487232" type="VHS1">
+                            <param id="0" name="Angle">90</param>
+                            <param id="1" name="Distance">random(0.5,3)</param>
+                        </action>
+                        <action id="-23" name="Move at angle" sid="218343482662158" type="VHS2">
+                            <param id="0" name="Angle">90</param>
+                            <param id="1" name="Distance">random(1,2)</param>
+                        </action>
+                        <action id="-23" name="Move at angle" sid="508362491941081" type="VHS3">
+                            <param id="0" name="Angle">90</param>
+                            <param id="1" name="Distance">random(1,2)</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block sid="748657585332442">
@@ -181,6 +193,39 @@
                 <action id="4" name="Set animation" sid="588482834678731" type="MainHero">
                     <param id="0" name="Animation">&quot;Idle&quot;</param>
                     <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="482985023368195">
+            <conditions>
+                <condition id="-4" name="Is outside layout" sid="566426508925930" type="VHS1" />
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="984826738989860" type="VHS1">
+                    <param id="0" name="X">0</param>
+                    <param id="1" name="Y">-231</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="176124339784309">
+            <conditions>
+                <condition id="-4" name="Is outside layout" sid="493720701538946" type="VHS2" />
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="554882514417093" type="VHS2">
+                    <param id="0" name="X">0</param>
+                    <param id="1" name="Y">-231</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="198116156992219">
+            <conditions>
+                <condition id="-4" name="Is outside layout" sid="852325383373384" type="VHS3" />
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="887313754290617" type="VHS3">
+                    <param id="0" name="X">0</param>
+                    <param id="1" name="Y">-231</param>
                 </action>
             </actions>
         </event-block>
