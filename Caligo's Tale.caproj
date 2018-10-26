@@ -17,14 +17,21 @@
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
+        <plugin author="Scirra" id="Tilemap" version="1">Tilemap</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
         <plugin author="Zack0Wack0/Scirra" id="WebStorage" version="1">WebStorage</plugin>
         <plugin author="Scirra" id="gamepad" version="1">Gamepad</plugin>
+        <plugin author="Scirra" id="shadowlight" version="1">Shadow Light</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="EightDir" version="1">8 Direction</behavior>
+        <behavior author="Scirra" id="shadowcaster" version="1">Shadow Caster</behavior>
+        <behavior author="Scirra" id="solid" version="1">Solid</behavior>
     </used-behaviors>
-    <used-effects />
+    <used-effects>
+        <effect author="Scirra" id="blurhorizontal">Blur Horizontal</effect>
+        <effect author="Scirra" id="blurvertical">Blur Vertical</effect>
+    </used-effects>
     <configurations>
         <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
     </configurations>
@@ -32,7 +39,7 @@
         <width>320</width>
         <height>180</height>
     </window-size>
-    <pixel-rounding>1</pixel-rounding>
+    <pixel-rounding>0</pixel-rounding>
     <preview-effects>1</preview-effects>
     <first-layout>Layout 1</first-layout>
     <use-loader-layout>0</use-loader-layout>
@@ -40,10 +47,11 @@
         <prop name="Clear background">No</prop>
         <prop name="Enable WebGL">On</prop>
         <prop name="Fullscreen in browser">Letterbox integer scale</prop>
-        <prop name="Fullscreen scaling">Low quality</prop>
+        <prop name="Fullscreen scaling">High quality</prop>
         <prop name="Fullscreen scaling quality">Low</prop>
         <prop name="Hide address bar">No</prop>
         <prop name="Loader style">Progress bar &amp; logo</prop>
+        <prop name="Orientations">Landscape</prop>
         <prop name="Preview browser">(default)</prop>
         <prop name="Sampling">Point</prop>
         <prop name="Use iOS retina display">All devices</prop>
@@ -88,20 +96,70 @@
                 <animation framecount="2" loop="1" name="Idle" pingpong="0" repeatcount="1" repeatto="0" sid="742037099348341" speed="1">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Pizza\Caligo&apos;s Tale\MainHero_idle1.png">
                         <image-point name="Light" x="0.5" y="1" />
+                        <collision-poly>
+                            <point x="0.410156" y="0.441406" />
+                            <point x="0.523438" y="0.306641" />
+                            <point x="0.595703" y="0.445313" />
+                            <point x="0.65625" y="0.572266" />
+                            <point x="0.587891" y="0.994141" />
+                            <point x="0.501953" y="0.783203" />
+                            <point x="0.408203" y="0.996094" />
+                            <point x="0.347656" y="0.568359" />
+                        </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Pizza\Caligo&apos;s Tale\MainHero_idle2.png">
                         <image-point name="Light" x="0.5" y="1" />
+                        <collision-poly>
+                            <point x="0.410156" y="0.441406" />
+                            <point x="0.523438" y="0.306641" />
+                            <point x="0.595703" y="0.445313" />
+                            <point x="0.65625" y="0.572266" />
+                            <point x="0.587891" y="0.994141" />
+                            <point x="0.501953" y="0.783203" />
+                            <point x="0.408203" y="0.996094" />
+                            <point x="0.347656" y="0.568359" />
+                        </collision-poly>
                     </frame>
                 </animation>
                 <animation framecount="3" loop="1" name="Run" pingpong="0" repeatcount="1" repeatto="0" sid="649656054431392" speed="3">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Pizza\Caligo&apos;s Tale\MainHero_run1.png">
                         <image-point name="Light" x="0.5" y="1" />
+                        <collision-poly>
+                            <point x="0.410156" y="0.441406" />
+                            <point x="0.523438" y="0.306641" />
+                            <point x="0.595703" y="0.445313" />
+                            <point x="0.65625" y="0.572266" />
+                            <point x="0.587891" y="0.994141" />
+                            <point x="0.501953" y="0.783203" />
+                            <point x="0.408203" y="0.996094" />
+                            <point x="0.347656" y="0.568359" />
+                        </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Pizza\Caligo&apos;s Tale\MainHero_run2.png">
                         <image-point name="Light" x="0.5" y="1" />
+                        <collision-poly>
+                            <point x="0.410156" y="0.441406" />
+                            <point x="0.523438" y="0.306641" />
+                            <point x="0.595703" y="0.445313" />
+                            <point x="0.65625" y="0.572266" />
+                            <point x="0.587891" y="0.994141" />
+                            <point x="0.501953" y="0.783203" />
+                            <point x="0.408203" y="0.996094" />
+                            <point x="0.347656" y="0.568359" />
+                        </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5">
                         <image-point name="Light" x="0.5" y="1" />
+                        <collision-poly>
+                            <point x="0.410156" y="0.441406" />
+                            <point x="0.523438" y="0.306641" />
+                            <point x="0.595703" y="0.445313" />
+                            <point x="0.65625" y="0.572266" />
+                            <point x="0.587891" y="0.994141" />
+                            <point x="0.501953" y="0.783203" />
+                            <point x="0.408203" y="0.996094" />
+                            <point x="0.347656" y="0.568359" />
+                        </collision-poly>
                     </frame>
                 </animation>
             </animation-folder>
@@ -127,7 +185,54 @@
             <plugin id="Sprite" />
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="337511622441235" speed="5">
-                    <frame duration="1" hotspotX="0.503145" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.503145" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.485063" y="0.433824" />
+                            <point x="0.509434" y="0.426471" />
+                            <point x="0.51022" y="0.48897" />
+                            <point x="0.485849" y="0.490809" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Sprite4" sid="825074088413198">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="334222154285156" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Tilemap" sid="420623730074418">
+            <plugin id="Tilemap" />
+            <behaviors>
+                <behavior-type name="ShadowCaster" sid="189952731307204">
+                    <behavior id="shadowcaster" />
+                </behavior-type>
+                <behavior-type name="Solid" sid="439068488437205">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <texture />
+            <tiles />
+        </object-type>
+        <object-type name="ShadowLight" sid="690251868949564">
+            <plugin id="shadowlight" />
+            <effects>
+                <effect-type name="BlurHorizontal">
+                    <effect id="blurhorizontal" />
+                </effect-type>
+                <effect-type name="BlurVertical">
+                    <effect id="blurvertical" />
+                </effect-type>
+            </effects>
+        </object-type>
+        <object-type name="Sprite5" sid="164285369766832">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="284961118180237" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
