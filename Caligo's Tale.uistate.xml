@@ -10,8 +10,10 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout active="1" order="0">Layout 1</layout>
-        <event-sheet order="1">Event sheet 1</event-sheet>
+        <layout order="1">Game</layout>
+        <layout order="3">Menu</layout>
+        <event-sheet active="1" order="2">Game sheet</event-sheet>
+        <event-sheet order="4">Menu sheet</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -29,14 +31,31 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="music-folder/" />
         <folder expanded="0" path="file-folder/Icons/" />
         <folder expanded="1" path="animation-folder/MainHero/" />
-        <folder expanded="1" path="animation-folder/Sprite/" />
-        <folder expanded="1" path="animation-folder/Sprite2/" />
+        <folder expanded="1" path="animation-folder/Healthbar/" />
         <folder expanded="1" path="animation-folder/Sprite3/" />
         <folder expanded="1" path="animation-folder/Sprite4/" />
-        <folder expanded="1" path="animation-folder/Sprite5/" />
+        <folder expanded="1" path="animation-folder/PlayerLight/" />
         <folder expanded="1" path="animation-folder/VHS1/" />
         <folder expanded="1" path="animation-folder/VHS2/" />
         <folder expanded="1" path="animation-folder/Sprite8/" />
         <folder expanded="1" path="animation-folder/VHS3/" />
+        <folder expanded="1" path="animation-folder/Floorshadow/" />
+        <folder expanded="1" path="animation-folder/FadeBox2/" />
+        <folder expanded="1" path="animation-folder/FadeBox1/" />
+        <folder expanded="1" path="animation-folder/Door/" />
+        <folder expanded="1" path="animation-folder/PlayerLight2/" />
+        <folder expanded="1" path="animation-folder/Sprite/" />
+        <folder expanded="1" path="animation-folder/GameLogo/" />
+        <folder expanded="1" path="animation-folder/BlackTransition/" />
+        <folder expanded="1" path="animation-folder/ZOLogo/" />
+        <folder expanded="1" path="animation-folder/SplashBackground/" />
+        <folder expanded="1" path="animation-folder/healthBar_anim/" />
+        <folder expanded="1" path="animation-folder/Inventory/" />
+        <folder expanded="1" path="animation-folder/Cursor/" />
+        <folder expanded="1" path="animation-folder/Item_Vial/" />
+        <folder expanded="1" path="animation-folder/Crate/" />
+        <folder expanded="1" path="animation-folder/BehindBlock/" />
+        <folder expanded="1" path="animation-folder/Sprite2/" />
+        <folder expanded="1" path="animation-folder/MainHeroCollision/" />
     </folders-expanded>
 </c2uistate>

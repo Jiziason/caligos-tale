@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Menu sheet</name>
+    <events>
+        <variable constant="0" name="MenuReady" sid="861238038401802" static="0" type="number">0</variable>
+        <variable constant="0" name="FadeTimer" sid="128811839518303" static="0" type="number">0</variable>
+        <variable constant="0" name="FadeTimer2" sid="566011405437799" static="0" type="number">0</variable>
+        <variable constant="0" name="MenuReady2" sid="448059258720506" static="0" type="number">0</variable>
+        <event-block sid="792739224124148">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="782791864412154" type="System" />
+            </conditions>
+            <actions>
+                <action id="2" name="Stop" sid="184336425488000" type="BlackTransition" />
+                <action id="2" name="Stop" sid="234018601084523" type="GameLogo" />
+                <action id="2" name="Stop" sid="190204336209120" type="ZOLogo" />
+                <action id="-16" name="Wait" sid="188337984670960" type="System">
+                    <param id="0" name="Seconds">2</param>
+                </action>
+                <action id="3" name="Start" sid="715140635340641" type="ZOLogo">
+                    <param id="0" name="From">1</param>
+                </action>
+                <action id="-16" name="Wait" sid="436626275508195" type="System">
+                    <param id="0" name="Seconds">8</param>
+                </action>
+                <action id="-9" name="Set value" sid="658746648472401" type="System">
+                    <param id="0" name="Variable">MenuReady2</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-16" name="Wait" sid="814642337275481" type="System">
+                    <param id="0" name="Seconds">5</param>
+                </action>
+                <action id="3" name="Start" sid="573409605028837" type="GameLogo">
+                    <param id="0" name="From">1</param>
+                </action>
+                <action id="-16" name="Wait" sid="529535839771950" type="System">
+                    <param id="0" name="Seconds">6</param>
+                </action>
+                <action id="-9" name="Set value" sid="124237328707144" type="System">
+                    <param id="0" name="Variable">MenuReady</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-16" name="Wait" sid="752525129099379" type="System">
+                    <param id="0" name="Seconds">5</param>
+                </action>
+                <action id="-25" name="Go to layout (by name)" sid="742766046368498" type="System">
+                    <param id="0" name="Layout">&quot;Game&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="267092942939734">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="682186258461501" type="System" />
+            </conditions>
+            <actions>
+                <action id="-16" name="Set opacity" sid="395727253024082" type="FadeBox1">
+                    <param id="0" name="Opacity">FadeTimer</param>
+                </action>
+                <action id="-16" name="Set opacity" sid="504076559209181" type="FadeBox2">
+                    <param id="0" name="Opacity">FadeTimer2</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="226397710766328">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="695119842737926" type="System">
+                            <param id="0" name="Variable">MenuReady</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="461072269379482" type="System">
+                            <param id="0" name="Variable">FadeTimer</param>
+                            <param id="1" name="Value">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="867637778889489">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="531488755493690" type="System">
+                            <param id="0" name="Variable">MenuReady2</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="884252495956036" type="System">
+                            <param id="0" name="Variable">FadeTimer2</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="421793194225169">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="421771515506091" type="System">
+                    <param id="0" name="Variable">FadeTimer</param>
+                    <param id="1" name="Comparison">5</param>
+                    <param id="2" name="Value">100</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="577226207850533" type="System">
+                    <param id="0" name="Variable">MenuReady</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="423252630361398">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="578574750613062" type="System">
+                    <param id="0" name="Variable">FadeTimer2</param>
+                    <param id="1" name="Comparison">5</param>
+                    <param id="2" name="Value">100</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="402147665668400" type="System">
+                    <param id="0" name="Variable">MenuReady2</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

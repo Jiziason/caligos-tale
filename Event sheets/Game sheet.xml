@@ -1,0 +1,667 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Game sheet</name>
+    <events>
+        <variable constant="0" name="ZoomedIn" sid="961029005329839" static="0" type="number">0</variable>
+        <variable constant="0" name="CurrentHP" sid="849636605410778" static="0" type="number">100</variable>
+        <variable constant="0" name="MaxHP" sid="630998795188837" static="0" type="number">110</variable>
+        <variable constant="0" name="BlinkTimer" sid="646362413253123" static="0" type="number">1</variable>
+        <variable constant="0" name="PlayerAlive" sid="953656083840293" static="0" type="number">1</variable>
+        <variable constant="0" name="NightTimer" sid="574397367716893" static="0" type="number">0</variable>
+        <variable constant="0" name="Running" sid="185251326165262" static="0" type="number">0</variable>
+        <variable constant="0" name="Moving" sid="306148244968553" static="0" type="number">0</variable>
+        <event-group description="" sid="491014236298730" title="Core Mechanics">
+            <sub-events>
+                <event-block sid="648981906727387">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="754063617322651" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-4" name="Set position to another object" sid="388022333030911" type="healthBar_anim">
+                            <param id="0" name="Object">Healthbar</param>
+                            <param id="1" name="Image point (optional)">&quot;ZeroPoint&quot;</param>
+                        </action>
+                        <action id="-4" name="Set position to another object" sid="147045594764224" type="ShadowLight">
+                            <param id="0" name="Object">MainHero</param>
+                            <param id="1" name="Image point (optional)">1</param>
+                        </action>
+                        <action id="2" name="Stop" sid="150623211106883" type="PlayerLight2" />
+                        <action id="-4" name="Set position to another object" sid="341800227403481" type="PlayerLight">
+                            <param id="0" name="Object">MainHero</param>
+                            <param id="1" name="Image point (optional)">0</param>
+                        </action>
+                        <action id="-4" name="Set position to another object" sid="267510647524564" type="PlayerLight2">
+                            <param id="0" name="Object">MainHero</param>
+                            <param id="1" name="Image point (optional)">0</param>
+                        </action>
+                        <action id="-4" name="Set position to another object" sid="492661822858360" type="Floorshadow">
+                            <param id="0" name="Object">MainHero</param>
+                            <param id="1" name="Image point (optional)">1</param>
+                        </action>
+                        <action id="-23" name="Move at angle" sid="640143940487232" type="VHS1">
+                            <param id="0" name="Angle">90</param>
+                            <param id="1" name="Distance">random(0.5,3)</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="563998753274916" type="VHS1">
+                            <param id="0" name="X">MainHero.X-161</param>
+                        </action>
+                        <action id="-23" name="Move at angle" sid="218343482662158" type="VHS2">
+                            <param id="0" name="Angle">90</param>
+                            <param id="1" name="Distance">random(0.5,4)</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="127461566055556" type="VHS2">
+                            <param id="0" name="X">MainHero.X-161</param>
+                        </action>
+                        <action id="-23" name="Move at angle" sid="508362491941081" type="VHS3">
+                            <param id="0" name="Angle">90</param>
+                            <param id="1" name="Distance">random(1,2)</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="397418581160652" type="VHS3">
+                            <param id="0" name="X">MainHero.X-161</param>
+                        </action>
+                        <action id="-6" name="Set height" sid="227591471605002" type="healthBar_anim">
+                            <param id="0" name="Height">(CurrentHP/MaxHP)*100</param>
+                        </action>
+                        <action id="-4" name="Set position to another object" sid="580408023247489" type="Cursor">
+                            <param id="0" name="Object">Inventory</param>
+                            <param id="1" name="Image point (optional)">CursorXY</param>
+                        </action>
+                        <action id="-4" name="Set position to another object" sid="143214533408726" type="MainHeroCollision">
+                            <param id="0" name="Object">MainHero</param>
+                            <param id="1" name="Image point (optional)">0</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="129356865300675">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="251463545657622" type="System">
+                                    <param id="0" name="Variable">CurrentHP</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">MaxHP</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="898882810373300" type="System">
+                                    <param id="0" name="Variable">CurrentHP</param>
+                                    <param id="1" name="Value">MaxHP</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="307746824921582">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="656697484060102" type="System">
+                                    <param id="0" name="Variable">CurrentHP</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="410479235437015" type="System">
+                                    <param id="0" name="Variable">CurrentHP</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="693316263058752">
+                            <conditions>
+                                <condition id="2" name="Key is down" sid="630641328183520" type="Keyboard">
+                                    <param id="0" name="Key">67</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="847183341706878" type="System">
+                                    <param id="0" name="Variable">CurrentHP</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="748657585332442">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="296034986583874" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="2" name="Stop" sid="837702548969087" type="Healthbar" />
+                        <action id="11" name="Set collisions enabled" sid="121088365843420" type="MainHero">
+                            <param id="0" name="Collisions">1</param>
+                        </action>
+                        <action id="2" name="Stop" sid="381389103323423" type="Item_Vial" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <variable constant="0" name="CursorXY" sid="316355374077458" static="0" type="number">1</variable>
+        <event-group description="" sid="473763741708409" title="Controls">
+            <sub-events>
+                <event-block sid="658187435912118">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="549309014981007" type="Keyboard">
+                            <param id="0" name="Key">39</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="212743012053342" type="System" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="575550076207791">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="593716978947613" type="System">
+                                    <param id="0" name="Variable">ZoomedIn</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="7" name="Set mirrored" sid="798858841042069" type="MainHero">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="809479444317287">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="785389100002528" type="System">
+                                    <param id="0" name="Variable">ZoomedIn</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="927439651207164" type="System">
+                                    <param id="0" name="Variable">CursorXY</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="506929057934594">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="848056342008342" type="System">
+                                            <param id="0" name="Variable">CursorXY</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">9</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="898006624566315" type="System">
+                                            <param id="0" name="Variable">CursorXY</param>
+                                            <param id="1" name="Value">9</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="263249380540978">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="728271135554220" type="Keyboard">
+                            <param id="0" name="Key">37</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="576423762148317" type="System" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="689369009595429">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="658647524928243" type="System">
+                                    <param id="0" name="Variable">ZoomedIn</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="7" name="Set mirrored" sid="491572819347032" type="MainHero">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="978646714634326">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="134937372619170" type="System">
+                                    <param id="0" name="Variable">ZoomedIn</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Subtract from" sid="928380992365108" type="System">
+                                    <param id="0" name="Variable">CursorXY</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="211389991341885">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="798153384273701" type="System">
+                                            <param id="0" name="Variable">CursorXY</param>
+                                            <param id="1" name="Comparison">3</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="744970528829543" type="System">
+                                            <param id="0" name="Variable">CursorXY</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="800501577677075">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="624075169828876" type="Keyboard">
+                            <param id="0" name="Key">38</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="426397219158187" type="System" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="408163840623710">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="453762905209671" type="System">
+                                    <param id="0" name="Variable">ZoomedIn</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                        </event-block>
+                        <event-block sid="955845104439676">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="959320797134009" type="System">
+                                    <param id="0" name="Variable">ZoomedIn</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Subtract from" sid="295743430681157" type="System">
+                                    <param id="0" name="Variable">CursorXY</param>
+                                    <param id="1" name="Value">3</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="163795801293404">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="473639668612253" type="System">
+                                            <param id="0" name="Variable">CursorXY</param>
+                                            <param id="1" name="Comparison">3</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="539160091950046" type="System">
+                                            <param id="0" name="Variable">CursorXY</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="457039654386474">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="103444591094157" type="Keyboard">
+                            <param id="0" name="Key">40</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="857606230397847" type="System" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="331351748092323">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="260207243118794" type="System">
+                                    <param id="0" name="Variable">ZoomedIn</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                        </event-block>
+                        <event-block sid="722728143777501">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="685329384904209" type="System">
+                                    <param id="0" name="Variable">ZoomedIn</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="614201108312967" type="System">
+                                    <param id="0" name="Variable">CursorXY</param>
+                                    <param id="1" name="Value">3</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="388019169516494">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="269589448894145" type="System">
+                                            <param id="0" name="Variable">CursorXY</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">9</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="100110120227635" type="System">
+                                            <param id="0" name="Variable">CursorXY</param>
+                                            <param id="1" name="Value">9</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="880263222438731">
+            <conditions>
+                <condition behavior="8Direction" id="0" name="Is moving" sid="592944214987100" type="MainHero" />
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="107548520654409" type="MainHero">
+                    <param id="0" name="Animation">&quot;Run&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="598753070818360" type="System">
+                    <param id="0" name="Variable">Moving</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="143905869567038">
+            <conditions>
+                <condition behavior="8Direction" id="0" inverted="1" name="Is moving" sid="951570077413985" type="MainHero" />
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="103294285384139" type="MainHero">
+                    <param id="0" name="Animation">&quot;Idle&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="772584025426579" type="System">
+                    <param id="0" name="Variable">Moving</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="" sid="171419199939471" title="VHS Filter">
+            <sub-events>
+                <event-block sid="359089958737869">
+                    <conditions>
+                        <condition id="-2" name="Compare Y" sid="271809610573284" type="VHS1">
+                            <param id="0" name="Comparison">5</param>
+                            <param id="1" name="Y co-ordinate">MainHero.Y+100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Set Y" sid="202720914348139" type="VHS1">
+                            <param id="0" name="Y">-300</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="158727987371398">
+                    <conditions>
+                        <condition id="-2" name="Compare Y" sid="590743090136613" type="VHS2">
+                            <param id="0" name="Comparison">5</param>
+                            <param id="1" name="Y co-ordinate">MainHero.Y+100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Set Y" sid="729232169552012" type="VHS2">
+                            <param id="0" name="Y">-300</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="896233450976735">
+                    <conditions>
+                        <condition id="-2" name="Compare Y" sid="982120237572209" type="VHS3">
+                            <param id="0" name="Comparison">5</param>
+                            <param id="1" name="Y co-ordinate">MainHero.Y+100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Set Y" sid="949228627167231" type="VHS3">
+                            <param id="0" name="Y">-300</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="855919753144087">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="991722893514971" type="System">
+                    <param id="0" name="Variable">PlayerAlive</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="615053715780227" type="System">
+                    <param id="0" name="Variable">BlinkTimer</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="123881640000981" type="System">
+                    <param id="0" name="Variable">BlinkTimer</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-16" name="Wait" sid="840579422918089" type="System">
+                    <param id="0" name="Seconds">random(0.5,3.0)</param>
+                </action>
+                <action id="5" name="Set frame" sid="136970549445959" type="PlayerLight2">
+                    <param id="0" name="Frame number">random(1,7)</param>
+                </action>
+                <action id="-16" name="Wait" sid="395150373925484" type="System">
+                    <param id="0" name="Seconds">random(0.08, 0.20)</param>
+                </action>
+                <action id="5" name="Set frame" sid="363796026441730" type="PlayerLight2">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="795982509515033" type="System">
+                    <param id="0" name="Variable">BlinkTimer</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="942288339486953">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="955659335617575" type="Keyboard">
+                    <param id="0" name="Key">32</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-11" name="Subtract from" sid="752848981200674" type="System">
+                    <param id="0" name="Variable">CurrentHP</param>
+                    <param id="1" name="Value">15</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="" sid="823165637640581" title="Inventory">
+            <sub-events>
+                <event-block sid="148649087913361">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="680785766109661" type="Keyboard">
+                            <param id="0" name="Key">70</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="933173434004048">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="541509865086366" type="System">
+                                    <param id="0" name="Variable">ZoomedIn</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" id="8" name="Set enabled" sid="476784350300334" type="MainHero">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="655243027154192" type="System">
+                                    <param id="0" name="Variable">ZoomedIn</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="284231063085451" type="System">
+                                    <param id="0" name="Layer">0</param>
+                                    <param id="1" name="Scale">2.0</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="995520425977200" type="System">
+                                    <param id="0" name="Layer">1</param>
+                                    <param id="1" name="Scale">2.0</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="365645851816151" type="System">
+                                    <param id="0" name="Layer">2</param>
+                                    <param id="1" name="Scale">2.0</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="192679377703389" type="System">
+                                    <param id="0" name="Layer">3</param>
+                                    <param id="1" name="Scale">2.0</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="919959411002103" type="Cursor">
+                                    <param id="0" name="Visibility">1</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="767061125133464" type="Inventory">
+                                    <param id="0" name="Visibility">1</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="117177293330230" type="Item_Vial">
+                                    <param id="0" name="Visibility">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="917777136073476">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="646925811147938" type="System" />
+                                <condition id="-14" name="Compare variable" sid="841625165856419" type="System">
+                                    <param id="0" name="Variable">ZoomedIn</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" id="8" name="Set enabled" sid="927765044235013" type="MainHero">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="660887916378183" type="System">
+                                    <param id="0" name="Variable">ZoomedIn</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="279880696850634" type="System">
+                                    <param id="0" name="Layer">0</param>
+                                    <param id="1" name="Scale">1.0</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="667929183282647" type="System">
+                                    <param id="0" name="Layer">1</param>
+                                    <param id="1" name="Scale">1.0</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="584956910908780" type="System">
+                                    <param id="0" name="Layer">2</param>
+                                    <param id="1" name="Scale">1.0</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="935816789808284" type="System">
+                                    <param id="0" name="Layer">3</param>
+                                    <param id="1" name="Scale">1.0</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="492538887413300" type="Cursor">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="679202884077094" type="Inventory">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="498651299670779" type="Item_Vial">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="131192902451931">
+                                    <conditions />
+                                    <actions />
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="277485248537459" title="Collisions">
+            <sub-events>
+                <event-block sid="819447637526814">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="324580724056301" type="MainHero">
+                            <param id="0" name="Object">FenceTileset</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-24" name="Move to top" sid="512412432542082" type="FenceTileset" />
+                    </actions>
+                </event-block>
+                <event-block sid="104126429967424">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="708696424867742" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-25" name="Move to bottom" sid="708588546421487" type="FenceTileset" />
+                    </actions>
+                </event-block>
+                <event-block sid="759762066104569">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="672686957628208" type="MainHeroCollision">
+                            <param id="0" name="Object">Door</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="379067325348992" type="Door">
+                            <param id="0" name="Animation">&quot;Close&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="668662777111835">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="754954744872425" type="MainHeroCollision">
+                    <param id="0" name="Object">Crate</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-26" name="Move to layer" sid="828472673850753" type="Crate">
+                    <param id="0" name="Layer">3</param>
+                </action>
+                <action id="-25" name="Move to bottom" sid="518035778739920" type="Crate" />
+            </actions>
+        </event-block>
+        <event-block sid="614226569873398">
+            <conditions>
+                <condition id="-22" name="Else" sid="592859739267180" type="System" />
+            </conditions>
+            <actions>
+                <action id="-26" name="Move to layer" sid="496446796219045" type="Crate">
+                    <param id="0" name="Layer">2</param>
+                </action>
+                <action id="-25" name="Move to bottom" sid="801049315470594" type="Crate" />
+            </actions>
+        </event-block>
+        <event-block sid="818708305671809">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="131097271148401" type="Keyboard">
+                    <param id="0" name="Key">68</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="460445846354375" type="System">
+                    <param id="0" name="Variable">ZoomedIn</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-4" name="Set position to another object" sid="779922520662501" type="Item_Vial">
+                    <param id="0" name="Object">Inventory</param>
+                    <param id="1" name="Image point (optional)">CursorXY</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
